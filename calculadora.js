@@ -21,9 +21,16 @@ function div(a, b) {
     return a / b
 }
 
+
+function test(){
+
+    console.log("Deu certo");
+}
+
 module.exports = {
     soma,
     sub,
     mult,
-    div
+    div,
+    test
 }
