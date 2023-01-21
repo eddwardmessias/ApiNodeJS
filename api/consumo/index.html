@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Games</title>
+    <hr>
+    <h4>Lista de games</h4>
+    <ul id="games"></ul>
+    <hr>
+    <h4>Novo Game</h4>
+    <input type="text" name="title" placeholder="Titulo"><br>
+    <input type="number" name="year" placeholder="Ano"><br>
+    <input type="number" name="price" placeholder="Preço"><br>
+    <button type="button" onclick="createGame()">Criar</button>
+
+</head>
+<body>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+<script>
+    function createGame(){
+        let titleInput = document.getElementById("title");
+        let yearInput = document.getElementById("year");
+        let priceInput = document.getElementById("price");
+   
+        let game = {
+            title: titleInput.value,
+            year: yearInput.value,
+            price: priceInput.value
+
+        }
+          
+    }
+
+
+
+
+
+
+
+
+
+axios.get("http://localhost:5000/games").then(response => {
+    let games = response.data;
+    let list = document.getElementById("games");
+
+    games.forEach(games => {
+        let item = document.createElement("li")
+        item.innerHTML = games.title + "-" + games.price + "-" + games.year
+        list.appendChild(item)
+        
+    });
+
+}).catch(erro => {
+    console.log(erro)
+})
+
+
+</script>
+
+</html>
